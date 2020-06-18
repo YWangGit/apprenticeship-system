@@ -29,7 +29,7 @@ content: [
         img: 'http://static.yunjiglobal.com/qnUpload/frontend/saleswarning/happynewyear.jpg?t=1586832053119',
         text: 'sdsddsdsddsds测试',
         bg: '#ec6e90',
-        url: '/materials/test1'
+        url: '/materials/test2'
       },
       {
         span: 4,
