@@ -6,7 +6,7 @@ content: [
     list: [
       {
         span: 4,
-        title: ['姓名:杨旺','性别:男'],
+        title: '中期检查资料',
         time: '2020-10-11',
         img: 'http://static.yunjiglobal.com/qnUpload/frontend/saleswarning/happynewyear.jpg?t=1586832053119',
         text: '',
