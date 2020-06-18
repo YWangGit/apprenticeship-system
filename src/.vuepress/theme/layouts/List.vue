@@ -43,7 +43,7 @@ export default {
       if (!item.url) {
         return false;
       }
-      open(item.url, item.name || "_self");
+      open(this.$withBase(item.url), item.name || "_self");
     }
   }
 };
