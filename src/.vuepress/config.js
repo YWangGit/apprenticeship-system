@@ -1,7 +1,7 @@
 module.exports = {
     title: '学徒制',
     description: "学徒制官网",
-    base: "/sziit/",
+    base: "/apprenticeship-system/",
     dest: "./docs",
     themeConfig: {
         carousels: ["/sziit.jpg", "/sziit.jpg", "/sziit.jpg"],
