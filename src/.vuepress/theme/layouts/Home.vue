@@ -89,6 +89,7 @@ export default {
 </script>
 <style lang="stylus">
 .home {
+  padding:0;
   // 公共头部样式
   .box-layout-header {
     display: flex;

@@ -1,7 +1,7 @@
 module.exports = {
     title: '教育部第三批现代学徒制试点（会计）',
     description: "教育部第三批现代学徒制试点（会计）",
-    base: "/",
+    base: "/apprenticeship-system/",
     dest: "./docs",
     themeConfig: {
         carousels: ["/sziit.jpg"],
