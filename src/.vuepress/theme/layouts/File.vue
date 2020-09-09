@@ -2,7 +2,7 @@
   <div class="theme-container">
     <el-card class="box-card">
       <div slot="header" class="clearfix file-title">
-        <span>{{title}}</span>
+        <el-page-header @back="goBack" :content="title"></el-page-header>
       </div>
       <div class="file-content">
         <div class="file-iframe">
@@ -29,7 +29,7 @@ export default {
     },
     url() {
       return this.$page.frontmatter.url || "";
-    }
+    },
   },
   methods: {
     /**
@@ -41,7 +41,7 @@ export default {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", url, true);
       xhr.responseType = "blob";
-      xhr.onload = function() {
+      xhr.onload = function () {
         if (xhr.status === 200) {
           cb(xhr.response);
         }
@@ -86,11 +86,14 @@ export default {
         window.location.protocol
       );
       const realFilename = filename || downlaodUrl.split("/").pop();
-      this.getBlob(downlaodUrl, blob => {
+      this.getBlob(downlaodUrl, (blob) => {
         this.saveAs(blob, realFilename);
       });
-    }
-  }
+    },
+    goBack() {
+      this.$router.go(-2);
+    },
+  },
 };
 </script>
 <style lang="stylus">

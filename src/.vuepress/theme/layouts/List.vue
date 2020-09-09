@@ -5,7 +5,7 @@
       {{title}}
     </div>
     <el-row :gutter="12">
-      <el-col :span="12" v-for="(item, index) in list" :key="index">
+      <el-col  v-for="(item, index) in list" :key="index" :span="item.span||12">
         <el-card
           class="box-card"
           @click.native="jump(item)"

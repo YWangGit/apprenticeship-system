@@ -1,6 +1,22 @@
 <template>
   <div class="theme-container home">
-    <el-row :gutter="20">
+    <div class="home-header box-layout">
+      <el-row :gutter="20">
+        <el-col v-for="(item,i) in headerList" :key="i" :span="item.span||24">
+          <div class="box-layout-item-wrap" :style="{background:item.bg}">
+            <div class="box-layout-item" @click="jump(item)">
+              <div class="box-layout-item-img" v-if="item.img">
+                <img :src="item.img" />
+              </div>
+              <div class="box-layout-item-title">
+                <span>{{item.title}}</span>
+              </div>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <!-- <el-row :gutter="20">
       <el-col v-for="(block,blockIndex) in content" :key="blockIndex" :span="block.span||24">
         <div :class="[block.layout||'box-layout']">
           <div
@@ -24,12 +40,12 @@
                     <img :src="item.img" />
                   </div>
                   <div class="box-layout-item-title" v-if="item.title">
-                    <p
-                      v-if="Array.isArray(item.title)"
-                      v-for="(titleItem,titleIndex) in item.title"
-                      :key="titleIndex"
-                    >
-                      <span v-html="titleItem"></span>
+                    <p v-if="Array.isArray(item.title)">
+                      <span
+                        v-for="(titleItem,titleIndex) in item.title"
+                        :key="titleIndex"
+                        v-html="titleItem"
+                      ></span>
                     </p>
                     <span v-else>{{item.title}}</span>
                   </div>
@@ -41,7 +57,7 @@
           </el-row>
         </div>
       </el-col>
-    </el-row>
+    </el-row>-->
     <!-- markdown -->
     <Content />
   </div>
@@ -50,11 +66,16 @@
 export default {
   name: "Home",
   computed: {
-    content() {
-      return this.$page.frontmatter.content
-        ? this.$page.frontmatter.content
+    // content() {
+    //   return this.$page.frontmatter.content
+    //     ? this.$page.frontmatter.content
+    //     : [];
+    // },
+    headerList() {
+      return this.$page.frontmatter.headerList
+        ? this.$page.frontmatter.headerList
         : [];
-    }
+    },
   },
   methods: {
     jump(item) {
@@ -62,8 +83,8 @@ export default {
         return false;
       }
       open(this.$withBase(item.url), item.name || "_self");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="stylus">
@@ -96,6 +117,12 @@ export default {
         padding: 0 20px;
       }
     }
+  }
+
+  .home-header {
+    position: relative;
+    top: -50px;
+    z-index: 99;
   }
 
   // 默认样式
@@ -141,78 +168,6 @@ export default {
 
         .box-layout-item-text {
           display: none;
-        }
-      }
-    }
-  }
-
-  // 文章列表样式
-  .articles {
-    .box-layout-item-wrap {
-      margin-bottom: 20px;
-      cursor: pointer;
-      box-shadow: 0 2px 12px 2px #f8f6fa;
-      border: none;
-      color: #303133;
-      padding: 0px 0px 0 2px;
-      border-radius: 5px;
-
-      .box-layout-item {
-        background: #fff;
-        border-radius: 5px 0 0 5px;
-        padding: 10px 20px;
-        position: relative;
-
-        .box-layout-item-img {
-          position: absolute;
-          max-width: 200px;
-          height: 70px;
-          right: 20px;
-          top: 50px;
-          overflow: hidden;
-          border-radius: 10px;
-
-          img {
-            height: 100%;
-          }
-        }
-
-        .box-layout-item-title {
-          font-size: 20px;
-          padding-right: 100px;
-          color: #000;
-          margin: 0;
-          font-weight: normal;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .box-layout-item-time {
-          position: absolute;
-          max-width: 200px;
-          height: 25px;
-          line-height: 25px;
-          right: 20px;
-          top: 10px;
-          overflow: hidden;
-          color: #a4a7ae;
-        }
-
-        .box-layout-item-text {
-          cursor: pointer;
-          margin: 0;
-          margin-top: 10px;
-          height: 70px;
-          line-height: 24px;
-          color: #a4a7ae;
-          word-break: break-all;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          padding-right: 100px;
         }
       }
     }
